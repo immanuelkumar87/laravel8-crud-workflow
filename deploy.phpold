@@ -1,0 +1,22 @@
+<?php
+namespace Deployer;
+
+require 'recipe/laravel.php';
+
+// Config
+
+set('repository', 'https://github.com/immanuelkumar87/laravel8-crud-workflow.git');
+
+add('shared_files', []);
+add('shared_dirs', []);
+add('writable_dirs', []);
+
+// Hosts
+
+host('139.162.19.129')
+    ->set('remote_user', 'deployer')
+    ->set('deploy_path', '~/laravel8-crud-workflow');
+
+// Hooks
+
+after('deploy:failed', 'deploy:unlock');
